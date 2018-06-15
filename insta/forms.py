@@ -18,3 +18,27 @@ class SignUpForm(UserCreationForm):
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['1st_password'].widget.attrs['placeholder'] = 'Password'
         self.fields['2nd_password'].widget.attrs['placeholder'] = 'Confirm your Password'
+
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(widget=TextInput(attrs={'class':'validate', 'placeholder':'Username'}))
+    password = forms.CharField(widget=PasswordInput(attrs={'placeholder':'Password'}))
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('email')
+
+
+class NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = ('image_name', 'image', 'image_caption')
+
+
+    def __init__(self, *args, **kwargs):
+        super(NewPostForm, self).__init__(*args, **kwargs)
+        self.fields['image_name'].widget.attrs['placeholder'] = 'Kindly input an image name'
+        self.fields['image'].widget.attrs['placeholder'] = 'Pick a Pic'
+        self.fields['image_caption'].widget.attrs['placeholder'] = 'Kindly add a Caption to the image'
