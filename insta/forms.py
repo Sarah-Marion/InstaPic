@@ -1,4 +1,4 @@
-from .models import Profile, Image
+from .models import Profile, Image, Comment
 from django import forms
 from django.forms.widgets import PasswordInput, TextInput
 from django.contrib.auth.forms import AuthenticationForm #UserCreationForm
@@ -28,3 +28,11 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment']
+
+
+class UpdateImageCaption(forms.Form):
+    """
+    class that creates the caption update form
+    """
+    image_caption = forms.CharField(label='Image Caption',max_length=300)
+
