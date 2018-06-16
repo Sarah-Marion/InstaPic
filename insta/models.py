@@ -92,25 +92,27 @@ class Image(models.Model):
 
 
 class Comment(models.Model):
-   """
+    """
     Class that defines the structure of a comment on an image
-   """
+    """
     user_id = models.ForeignKey(User,on_delete=models.CASCADE, null= True)
     image_id = models.ForeignKey(Image,on_delete=models.CASCADE, null= True)
     comment= models.TextField(blank=True)
+   
 
     def __str__(self):
         return self.comment
 
     def save_comment(self):
-       """
+        """
         method that saves a comment
-       """
+        """
         self.save()
+
     def delete_comment(self):
-       """
+        """
         methods that deletes a comment
-       """
+        """
         self.delete()
 
 
