@@ -22,9 +22,9 @@ class ProfileUpdateForm(forms.Form):
     bio = forms.CharField(label='Image Caption', max_length=500)
 
 class CommentForm(forms.ModelForm):
-   """
+    """
     class that creates the comment form
-   """
+    """
     class Meta:
         model = Comment
         fields = ['comment']
