@@ -124,6 +124,7 @@ class Like(models.Model):
     def __int__(self):
         return self.user.username
 
+
     def save_like(self):
         self.save() 
 
