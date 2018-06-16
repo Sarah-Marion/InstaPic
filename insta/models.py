@@ -91,3 +91,53 @@ class Image(models.Model):
 
 
 
+class Comment(models.Model):
+   """
+    Class that defines the structure of a comment on an image
+   """
+    user_id = models.ForeignKey(User,on_delete=models.CASCADE, null= True)
+    image_id = models.ForeignKey(Image,on_delete=models.CASCADE, null= True)
+    comment= models.TextField(blank=True)
+
+    def __str__(self):
+        return self.comment
+
+    def save_comment(self):
+       """
+        method that saves a comment
+       """
+        self.save()
+    def delete_comment(self):
+       """
+        methods that deletes a comment
+       """
+        self.delete()
+
+
+class Like(models.Model):
+    """
+    Class defines the structure of a like on a posted Image
+    """
+    user = models.ForeignKey(User,on_delete=models.CASCADE, null= True)
+    image = models.ForeignKey(Image,on_delete=models.CASCADE, null = True)
+
+    def __int__(self):
+        return self.user.username
+
+    def save_like(self):
+        self.save() 
+
+    def unlike(self):
+        self.delete()
+
+    def like(self):
+        self.likes_number = 2
+        self.save()
+
+    @classmethod
+    def get_likes(cls,image_id):
+        """
+        Function that gets likes belonging to a paticular post
+        """
+        likes = cls.objects.filter(image = image_id)
+        return likes 
