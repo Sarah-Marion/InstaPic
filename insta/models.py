@@ -14,7 +14,7 @@ class Profile(models.Model):
     Profile class that defines objects of each profile
     """
     username = models.CharField(max_length=30,default='User')
-    profile_photo = models.ImageField(upload_to="images/",null = True)
+    profile_photo = models.ImageField(upload_to="pics/",null = True)
     bio = models.TextField(default='User does Not have a Bio yet',blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null= True )
     
@@ -33,13 +33,11 @@ class Profile(models.Model):
         found_profiles = cls.objects.filter(username__icontains = name).all()
         return found_profiles
 
-
-        
 class Image(models.Model):
     """
     Image class to define Image Objects
     """
-    image = models.ImageField(upload_to="images/",null = True )
+    image = models.ImageField(upload_to="pics/",null = True )
     image_name = models.CharField(max_length =30,null = True ) 
     image_caption = models.TextField(null = True )
     pub_date = models.DateTimeField(auto_now_add=True, null= True)
@@ -88,7 +86,6 @@ class Image(models.Model):
         A Function to get all posts of people that the current user follows
         """
         timeline_posts = Image.objects.filter()
-
 
 
 class Comment(models.Model):
@@ -144,6 +141,8 @@ class Like(models.Model):
         """
         likes = cls.objects.filter(image = image_id)
         return likes 
+
+
 
 class Follow(models.Model):
     """
