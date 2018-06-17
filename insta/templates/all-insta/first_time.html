@@ -1,0 +1,12 @@
+{%extends 'all-insta/base.html'%} 
+{%load staticfiles%} 
+{%load bootstrap3 %} 
+
+{% block content %}
+    <div class="row">
+        <div style="overflow:scroll; height:400px;">
+            <h3>Ooopps.. !! You are Not Following Anyone as of now. 
+                <a href="{% url 'viewProfiles' %}">Click here</a> to find people to follow</h3>
+        </div>
+    </div>
+{% endblock%}
