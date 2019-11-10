@@ -8,7 +8,7 @@ django-imagekit==4.0.2
 django-material==1.2.5
 django-registration==2.4.1
 django-tinymce==2.7.0
-gunicorn==19.8.1
+gunicorn==20.0.0
 pilkit==2.0
 Pillow==5.1.0
 psycopg2==2.7.4
